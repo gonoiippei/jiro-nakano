@@ -245,7 +245,7 @@ export default function SceneBackground({ bg, className = "" }: SceneBackgroundP
     <div className={className} style={{ width: "100%", height: "100%" }}>
       {bg === "street" && (
         <PhotoOrSvg
-          src="/bg_street.jpg"
+          src="/bg_street.jpg.jpg"
           objectPosition="center 40%"
           Fallback={BgStreetSVG}
         />
