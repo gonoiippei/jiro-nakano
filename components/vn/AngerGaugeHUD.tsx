@@ -3,16 +3,16 @@
 import React from "react";
 
 interface AngerGaugeHUDProps {
-  gauge: number;        // 0〜100
-  sceneIndex: number;   // 0-indexed (表示は+1)
+  gauge: number;
+  sceneIndex: number;
   totalScenes: number;
 }
 
 function getGaugeColor(gauge: number): string {
   if (gauge >= 80) return "#CC0000";
   if (gauge >= 60) return "#FF6600";
-  if (gauge >= 40) return "#FFAA00";
-  return "#2ECC40";
+  if (gauge >= 40) return "#E8A000";
+  return "#1a7a00";
 }
 
 function getGaugeLabel(gauge: number): string {
@@ -38,31 +38,34 @@ export default function AngerGaugeHUD({
         position: "sticky",
         top: 0,
         zIndex: 50,
-        background: "#1A1A1A",
-        borderBottom: `2px solid ${color}`,
-        padding: "6px 12px",
+        background: "#FFD700",
+        borderBottom: `3px solid #111`,
+        padding: "5px 14px",
         display: "flex",
         alignItems: "center",
-        gap: "10px",
+        gap: "12px",
         minHeight: "44px",
       }}
     >
       {/* 場面表示 */}
       <div
         style={{
-          color: "#FFF",
+          background: "#111",
+          color: "#FFD700",
           fontSize: "0.7rem",
           fontWeight: 900,
           whiteSpace: "nowrap",
           letterSpacing: "0.05em",
-          minWidth: "50px",
+          padding: "2px 8px",
+          minWidth: "60px",
+          textAlign: "center",
         }}
       >
         場面{sceneIndex + 1}/{totalScenes}
       </div>
 
       {/* ゲージ本体 */}
-      <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "2px" }}>
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "3px" }}>
         <div
           style={{
             display: "flex",
@@ -73,8 +76,8 @@ export default function AngerGaugeHUD({
           <span
             style={{
               fontSize: "0.65rem",
-              fontWeight: 700,
-              color: "#AAA",
+              fontWeight: 900,
+              color: "#111",
               letterSpacing: "0.04em",
             }}
           >
@@ -84,21 +87,21 @@ export default function AngerGaugeHUD({
             style={{
               fontSize: "0.65rem",
               fontWeight: 900,
-              color: color,
+              color: isDanger ? "#CC0000" : "#111",
               animation: isDanger ? "gaugePulse 0.6s ease-in-out infinite" : "none",
             }}
           >
             {label}
           </span>
         </div>
+        {/* ゲージ外枠 */}
         <div
           style={{
             width: "100%",
-            height: "10px",
-            background: "#333",
-            borderRadius: "2px",
+            height: "12px",
+            background: "#FFF",
+            border: "2px solid #111",
             overflow: "hidden",
-            border: "1px solid #444",
           }}
         >
           <div
@@ -108,7 +111,6 @@ export default function AngerGaugeHUD({
               background: color,
               transition: "width 0.5s ease, background 0.5s ease",
               animation: isDanger ? "gaugePulse 0.6s ease-in-out infinite" : "none",
-              borderRadius: "2px",
             }}
           />
         </div>
@@ -117,12 +119,15 @@ export default function AngerGaugeHUD({
       {/* 数値 */}
       <div
         style={{
-          color: color,
-          fontSize: "0.8rem",
+          background: isDanger ? "#CC0000" : "#111",
+          color: "#FFD700",
+          fontSize: "0.85rem",
           fontWeight: 900,
-          minWidth: "36px",
-          textAlign: "right",
+          minWidth: "40px",
+          textAlign: "center",
+          padding: "2px 6px",
           animation: isDanger ? "gaugePulse 0.6s ease-in-out infinite" : "none",
+          transition: "background 0.3s",
         }}
       >
         {clampedGauge}

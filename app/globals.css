@@ -1,9 +1,12 @@
 @import "tailwindcss";
 
 :root {
+  --jiro-yellow: #FFD700;
+  --jiro-yellow-dark: #E6B800;
+  --jiro-black: #111111;
   --jiro-red: #cc0000;
   --jiro-dark: #1a1a1a;
-  --jiro-cream: #f5f0e8;
+  --jiro-cream: #FFF9E0;
 }
 
 body {
@@ -36,29 +39,32 @@ body {
   animation: fadeIn 0.4s ease-out;
 }
 
+/* ===== 二郎カラー：黄色×黒ボタン ===== */
 .jiro-btn {
-  background: var(--jiro-red);
-  color: white;
+  background: var(--jiro-yellow);
+  color: var(--jiro-black);
   font-weight: 900;
   font-size: 1.1rem;
   padding: 1rem 2rem;
-  border: 3px solid #990000;
-  box-shadow: 4px 4px 0px #990000;
+  border: 4px solid var(--jiro-black);
+  box-shadow: 5px 5px 0px var(--jiro-black);
   cursor: pointer;
   transition: all 0.1s;
   text-align: center;
   display: block;
   width: 100%;
+  letter-spacing: 0.05em;
 }
 
 .jiro-btn:hover {
   transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0px #990000;
+  box-shadow: 3px 3px 0px var(--jiro-black);
+  background: #FFE033;
 }
 
 .jiro-btn:active {
-  transform: translate(4px, 4px);
-  box-shadow: 0px 0px 0px #990000;
+  transform: translate(5px, 5px);
+  box-shadow: 0px 0px 0px var(--jiro-black);
 }
 
 .jiro-btn-white {
@@ -89,13 +95,11 @@ body {
 
 /* ===== サバイバルゲーム用アニメーション ===== */
 
-/* 場面切替: 右からスライドイン */
 @keyframes slideInFromRight {
   from { opacity: 0; transform: translateX(60px); }
   to   { opacity: 1; transform: translateX(0); }
 }
 
-/* 選択肢ボタン: 下からバウンス登場 */
 @keyframes bounceInUp {
   0%   { opacity: 0; transform: translateY(40px) scale(0.9); }
   60%  { opacity: 1; transform: translateY(-6px) scale(1.02); }
@@ -103,13 +107,11 @@ body {
   100% { transform: translateY(0) scale(1); }
 }
 
-/* ランダムイベントオーバーレイ: 上からスライドダウン */
 @keyframes slideDownFromTop {
   from { opacity: 0; transform: translateY(-80px) scale(0.95); }
   to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* ゲームオーバー文字: ドカンと出現 */
 @keyframes impactIn {
   0%   { opacity: 0; transform: scale(2.5) rotate(-5deg); }
   50%  { transform: scale(0.85) rotate(2deg); }
@@ -117,33 +119,27 @@ body {
   100% { opacity: 1; transform: scale(1) rotate(0deg); }
 }
 
-/* ゲージの危険pulse（80%超） */
 @keyframes gaugePulse {
   0%, 100% { opacity: 1; }
-  50%       { opacity: 0.7; }
+  50%       { opacity: 0.6; }
 }
 
-/* クリア画面の輝き */
 @keyframes goldShimmer {
   0%   { background-position: -200% center; }
   100% { background-position: 200% center; }
 }
 
-/* 赤フラッシュ（不正解時） */
 @keyframes redFlash {
   0%   { opacity: 0; }
   25%  { opacity: 0.5; }
   100% { opacity: 0; }
 }
 
-/* 場面タイトルのポップイン */
 @keyframes scenePopIn {
-  0%   { transform: scale(0) rotate(-10deg); }
-  70%  { transform: scale(1.1) rotate(2deg); }
-  100% { transform: scale(1) rotate(0deg); }
+  0%   { opacity: 0; transform: translateY(-8px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
-/* ゲームオーバー画面の背景点滅 */
 @keyframes dangerBlink {
   0%, 100% { background-color: #cc0000; }
   50%       { background-color: #990000; }
@@ -170,7 +166,7 @@ body {
 }
 
 .scene-pop-in {
-  animation: scenePopIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: scenePopIn 0.3s ease-out both;
 }
 
 .gold-shimmer {
@@ -182,7 +178,7 @@ body {
   animation: goldShimmer 2s linear infinite;
 }
 
-/* サバイバル用ボタン（仲野ゲージのカラーに対応） */
+/* サバイバル用ボタン */
 .survival-choice-btn {
   background: white;
   color: var(--jiro-dark);
@@ -231,13 +227,11 @@ body {
 
 /* ===== ビジュアルノベル用アニメーション ===== */
 
-/* セリフ▼矢印点滅 */
 @keyframes vnBlinkArrow {
   0%, 100% { opacity: 1; }
-  50%       { opacity: 0.2; }
+  50%       { opacity: 0.15; }
 }
 
-/* 選択肢ボタン バウンスイン */
 @keyframes vnBounceIn {
   0%   { opacity: 0; transform: translateY(20px) scale(0.9); }
   60%  { opacity: 1; transform: translateY(-4px) scale(1.02); }
@@ -245,20 +239,18 @@ body {
   100% { transform: translateY(0) scale(1); }
 }
 
-/* スプライト登場（右からスライド） */
 @keyframes vnSpriteEnter {
-  0%   { opacity: 0; transform: translateX(30px); }
+  0%   { opacity: 0; transform: translateX(40px); }
   100% { opacity: 1; transform: translateX(0); }
 }
 
-/* ダイアログボックス フェードイン */
 @keyframes vnDialogueIn {
-  from { opacity: 0; transform: translateY(10px); }
+  from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
 .vn-dialogue-box {
-  padding: 12px 14px 18px;
+  padding: 14px 18px 20px;
   border-radius: 2px;
   animation: vnDialogueIn 0.3s ease-out both;
   cursor: pointer;
