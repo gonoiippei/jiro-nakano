@@ -86,3 +86,145 @@ body {
   transform: translate(4px, 4px);
   box-shadow: 0px 0px 0px var(--jiro-dark);
 }
+
+/* ===== サバイバルゲーム用アニメーション ===== */
+
+/* 場面切替: 右からスライドイン */
+@keyframes slideInFromRight {
+  from { opacity: 0; transform: translateX(60px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* 選択肢ボタン: 下からバウンス登場 */
+@keyframes bounceInUp {
+  0%   { opacity: 0; transform: translateY(40px) scale(0.9); }
+  60%  { opacity: 1; transform: translateY(-6px) scale(1.02); }
+  80%  { transform: translateY(3px) scale(0.99); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+/* ランダムイベントオーバーレイ: 上からスライドダウン */
+@keyframes slideDownFromTop {
+  from { opacity: 0; transform: translateY(-80px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ゲームオーバー文字: ドカンと出現 */
+@keyframes impactIn {
+  0%   { opacity: 0; transform: scale(2.5) rotate(-5deg); }
+  50%  { transform: scale(0.85) rotate(2deg); }
+  75%  { transform: scale(1.1) rotate(-1deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+/* ゲージの危険pulse（80%超） */
+@keyframes gaugePulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.7; }
+}
+
+/* クリア画面の輝き */
+@keyframes goldShimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* 赤フラッシュ（不正解時） */
+@keyframes redFlash {
+  0%   { opacity: 0; }
+  25%  { opacity: 0.5; }
+  100% { opacity: 0; }
+}
+
+/* 場面タイトルのポップイン */
+@keyframes scenePopIn {
+  0%   { transform: scale(0) rotate(-10deg); }
+  70%  { transform: scale(1.1) rotate(2deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+/* ゲームオーバー画面の背景点滅 */
+@keyframes dangerBlink {
+  0%, 100% { background-color: #cc0000; }
+  50%       { background-color: #990000; }
+}
+
+.scene-slide-in {
+  animation: slideInFromRight 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.bounce-in-up {
+  animation: bounceInUp 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.event-slide-down {
+  animation: slideDownFromTop 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.impact-in {
+  animation: impactIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.red-flash {
+  animation: redFlash 0.6s ease-out both;
+}
+
+.scene-pop-in {
+  animation: scenePopIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.gold-shimmer {
+  background: linear-gradient(90deg, #facc15, #fbbf24, #f59e0b, #facc15);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: goldShimmer 2s linear infinite;
+}
+
+/* サバイバル用ボタン（仲野ゲージのカラーに対応） */
+.survival-choice-btn {
+  background: white;
+  color: var(--jiro-dark);
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.85rem 1.25rem;
+  border: 3px solid var(--jiro-dark);
+  box-shadow: 4px 4px 0px var(--jiro-dark);
+  cursor: pointer;
+  transition: all 0.1s;
+  text-align: left;
+  display: block;
+  width: 100%;
+  line-height: 1.4;
+}
+
+.survival-choice-btn:hover {
+  background: #f5f0e8;
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px var(--jiro-dark);
+}
+
+.survival-choice-btn:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0px 0px 0px var(--jiro-dark);
+}
+
+.survival-choice-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.survival-choice-btn.correct {
+  background: #1a5c1a;
+  color: white;
+  border-color: #0d3d0d;
+  box-shadow: 4px 4px 0px #0d3d0d;
+}
+
+.survival-choice-btn.wrong {
+  background: #cc0000;
+  color: white;
+  border-color: #990000;
+  box-shadow: 4px 4px 0px #990000;
+}

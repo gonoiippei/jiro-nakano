@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 
 export default function Home() {
   return (
@@ -26,76 +25,59 @@ export default function Home() {
           <p className="text-white font-black text-2xl tracking-widest">仲野店</p>
         </div>
 
-        {/* 店主・仲野の画像エリア */}
-        <div className="w-full mb-6 relative">
-          <div
-            className="w-full aspect-square max-h-72 flex items-center justify-center overflow-hidden"
-            style={{ background: "#f5f0e8", border: "4px solid #fff" }}
-          >
-            <Image
-              src="https://placehold.co/400x400/f5f0e8/1a1a1a?text=%E4%BB%B2%E9%87%8E%E5%BA%97%E4%B8%BB"
-              alt="店主・仲野"
-              width={400}
-              height={400}
-              className="object-cover w-full h-full"
-              unoptimized
-            />
-          </div>
-          <div
-            className="absolute bottom-0 left-0 right-0 py-2 px-4 text-center"
-            style={{ background: "rgba(26,26,26,0.85)" }}
-          >
-            <p className="text-white font-black text-lg">店主・仲野</p>
-          </div>
-        </div>
-
         {/* 仲野からのセリフ */}
         <div
           className="w-full p-4 mb-6 text-center"
           style={{
             background: "#f5f0e8",
-            border: "3px solid #1a1a1a",
-            boxShadow: "4px 4px 0 #1a1a1a",
+            border: "3px solid #fff",
+            boxShadow: "4px 4px 0 #fff",
           }}
         >
           <p className="font-black text-xl" style={{ color: "#1a1a1a" }}>
-            「入りたいなら
-            <span style={{ color: "#cc0000" }}>二郎のルール</span>を
-            わかってもらわないと困る。」
+            「覚悟して来てんだろうな。」
           </p>
           <p className="text-gray-600 text-sm mt-2 font-bold">
-            ── 全10問。正しい二郎マナーを証明しろ。
+            ── 店主・仲野
           </p>
         </div>
+
+        {/* メインCTA: サバイバルゲーム */}
+        <Link href="/survival" className="w-full mb-3">
+          <button className="jiro-btn text-xl font-black tracking-widest py-5">
+            🍜 プチサバイバルゲームで入店する
+          </button>
+        </Link>
+        <p className="text-gray-400 text-xs mb-5 text-center">
+          全7場面・仲野ゲージ管理・ランダムイベントあり
+        </p>
+
+        {/* 区切り */}
+        <div className="w-full flex items-center gap-3 mb-5">
+          <div className="flex-1 h-px" style={{ background: "#444" }} />
+          <span className="text-gray-500 text-xs font-bold">または</span>
+          <div className="flex-1 h-px" style={{ background: "#444" }} />
+        </div>
+
+        {/* サブ: クイズ */}
+        <Link href="/quiz" className="w-full mb-2">
+          <button className="jiro-btn-white text-center font-black text-base py-4">
+            📝 二郎マニア度クイズ（全10問）
+          </button>
+        </Link>
+        <p className="text-gray-500 text-xs mb-6 text-center">
+          ジロリアンなら全問正解できるはず
+        </p>
 
         {/* 注意書き */}
         <div
-          className="w-full p-3 mb-6 text-sm"
-          style={{
-            background: "#fff3cd",
-            border: "2px solid #cc0000",
-          }}
+          className="w-full p-3 text-xs"
+          style={{ background: "#2a2a2a", border: "1px solid #444" }}
         >
-          <p className="font-bold text-center" style={{ color: "#cc0000" }}>
-            ⚠ 間違えると仲野に怒られます
+          <p className="text-gray-400 text-center">
+            ※これはフィクションです。実際の店舗・人物とは関係ありません。
           </p>
-          <ul className="mt-2 text-gray-700 space-y-1 text-xs">
-            <li>・二郎のルール・マナーに関する全10問</li>
-            <li>・間違えると仲野から叱責されます</li>
-            <li>・全問正解で「ジロリアン認定」</li>
-          </ul>
         </div>
-
-        {/* 入店ボタン */}
-        <Link href="/quiz" className="w-full">
-          <button className="jiro-btn text-xl font-black tracking-widest py-5">
-            ▶ 入 店 す る
-          </button>
-        </Link>
-
-        <p className="text-gray-400 text-xs mt-4 text-center">
-          ※これはフィクションです。実際の店舗とは関係ありません。
-        </p>
       </div>
 
       {/* 下部の帯 */}
