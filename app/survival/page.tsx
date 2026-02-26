@@ -1,5 +1,5 @@
-import SurvivalGame from "@/components/SurvivalGame";
+import VNGame from "@/components/vn/VNGame";
 
 export default function SurvivalPage() {
-  return <SurvivalGame />;
+  return <VNGame />;
 }
