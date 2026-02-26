@@ -174,27 +174,60 @@ export default function VNGame() {
             二郎
           </p>
           <div style={{ height: "5px", background: "#111", margin: "12px 0 10px" }} />
-          <p style={{ color: "#111", fontWeight: 900, fontSize: "clamp(1.2rem,4vw,1.6rem)", letterSpacing: "0.35em" }}>
+          <p style={{ color: "#111", fontWeight: 900, fontSize: "clamp(2rem,7vw,3.2rem)", letterSpacing: "0.4em" }}>
             仲野　店
           </p>
         </div>
+
         {/* キャッチコピー */}
         <div style={{
-          background: "#111", padding: "16px 28px", textAlign: "center",
-          marginBottom: "28px", maxWidth: "460px", width: "100%", border: "4px solid #111",
+          background: "#111", padding: "14px 24px", textAlign: "center",
+          marginBottom: "20px", maxWidth: "460px", width: "100%", border: "4px solid #111",
         }}>
-          <p style={{ fontWeight: 900, fontSize: "clamp(1rem,3.5vw,1.25rem)", color: "#FFD700", lineHeight: 1.7 }}>
+          <p style={{ fontWeight: 900, fontSize: "clamp(1rem,3.5vw,1.2rem)", color: "#FFD700", lineHeight: 1.6 }}>
             「覚悟して来てんだろうな。」
           </p>
-          <p style={{ color: "#666", fontSize: "0.8rem", marginTop: "4px", fontWeight: 700 }}>── 店主・仲野</p>
+          <p style={{ color: "#666", fontSize: "0.75rem", marginTop: "2px", fontWeight: 700 }}>── 店主・仲野</p>
         </div>
+
+        {/* ルール説明 */}
+        <div style={{
+          background: "#111", border: "4px solid #FFD700",
+          padding: "18px 22px", marginBottom: "22px", maxWidth: "460px", width: "100%",
+        }}>
+          {/* ゴール */}
+          <p style={{
+            color: "#FFD700", fontWeight: 900, fontSize: "0.85rem",
+            letterSpacing: "0.15em", marginBottom: "8px",
+            borderBottom: "1px solid #333", paddingBottom: "8px",
+          }}>
+            🎯 ゴール
+          </p>
+          <p style={{ color: "#FFF", fontWeight: 700, fontSize: "1rem", lineHeight: 1.7, marginBottom: "16px" }}>
+            ラーメン二郎を注文して食べ、<br />
+            <span style={{ color: "#FFD700" }}>無事に退店する</span>のが目標！
+          </p>
+
+          {/* ルール */}
+          <p style={{
+            color: "#FFD700", fontWeight: 900, fontSize: "0.85rem",
+            letterSpacing: "0.15em", marginBottom: "8px",
+            borderTop: "1px solid #333", paddingTop: "12px",
+          }}>
+            📋 ルール
+          </p>
+          <ul style={{ color: "#CCC", fontSize: "0.92rem", lineHeight: 2, listStyle: "none", padding: 0, margin: 0 }}>
+            <li>📍 全 <strong style={{ color: "#FFD700" }}>7場面</strong> で選択肢を選ぶ</li>
+            <li>😤 仲野イライラゲージが <strong style={{ color: "#FF4444" }}>100</strong> になると…</li>
+            <li>🚫 <strong style={{ color: "#FF4444" }}>即ゲームオーバー（退店命令）！</strong></li>
+            <li>✅ 全場面クリアすれば <strong style={{ color: "#FFD700" }}>脱出成功！</strong></li>
+          </ul>
+        </div>
+
         <div style={{ maxWidth: "460px", width: "100%", display: "flex", flexDirection: "column", gap: "12px" }}>
           <button className="jiro-btn" style={{ fontSize: "1.3rem", padding: "1.2rem" }} onClick={startGame}>
             🍜 入店する
           </button>
-          <p style={{ color: "#555", fontSize: "0.72rem", textAlign: "center", fontWeight: 700 }}>
-            全7場面・仲野ゲージ管理・ランダムイベントあり
-          </p>
           <Link href="/" style={{ display: "block", textAlign: "center", color: "#555", fontSize: "0.82rem", fontWeight: 700 }}>
             ← トップに戻る
           </Link>
@@ -326,7 +359,7 @@ export default function VNGame() {
           background: "rgba(0,0,0,0.4)", border: "2px solid #FFD700",
           padding: "12px 24px", marginBottom: "16px", textAlign: "center",
         }}>
-          <p style={{ color: "#AAA", fontSize: "0.75rem", fontWeight: 700 }}>仲野ゲージ最終値</p>
+          <p style={{ color: "#AAA", fontSize: "0.75rem", fontWeight: 700 }}>仲野イライラゲージ最終値</p>
           <p style={{ color: gauge >= 80 ? "#FF6060" : gauge >= 50 ? "#FFAA00" : "#4DFF91", fontWeight: 900, fontSize: "2.5rem" }}>
             {gauge} / 100
           </p>
@@ -370,7 +403,7 @@ export default function VNGame() {
             padding: "10px", marginBottom: "22px",
           }}>
             <p style={{ color: activeEvent.gaugeDelta > 0 ? "#FF6060" : "#4DFF91", fontWeight: 900, fontSize: "1rem" }}>
-              仲野ゲージ {activeEvent.gaugeDelta > 0 ? "+" : ""}{activeEvent.gaugeDelta}
+              仲野イライラゲージ {activeEvent.gaugeDelta > 0 ? "+" : ""}{activeEvent.gaugeDelta}
             </p>
           </div>
           <button className="jiro-btn" onClick={handleEventDismiss}>続ける</button>

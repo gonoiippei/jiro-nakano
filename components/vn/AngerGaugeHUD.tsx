@@ -72,7 +72,7 @@ export default function AngerGaugeHUD({
         {/* ラベル行 */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <span style={{ fontSize: "0.78rem", fontWeight: 900, color: "#111" }}>
-            仲野ゲージ
+            仲野イライラゲージ
           </span>
           <span
             style={{
